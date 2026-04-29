@@ -163,9 +163,23 @@ document.querySelectorAll('[data-carousel]').forEach((carousel) => {
   const previous = carousel.querySelector('.previous')
   const next = carousel.querySelector('.next')
   const dots = carousel.querySelector('.carousel-dots')
-  let index = 0
+  let index = 1
   let startX = 0
   let timer
+
+  if (!track || slides.length === 0) {
+    return
+  }
+
+  const firstClone = slides[0].cloneNode(true)
+  const lastClone = slides[slides.length - 1].cloneNode(true)
+
+  firstClone.classList.add('carousel-clone')
+  firstClone.setAttribute('aria-hidden', 'true')
+  lastClone.classList.add('carousel-clone')
+  lastClone.setAttribute('aria-hidden', 'true')
+  track.insertBefore(lastClone, slides[0])
+  track.appendChild(firstClone)
 
   slides.forEach((_, slideIndex) => {
     const dot = document.createElement('button')
@@ -180,25 +194,64 @@ document.querySelectorAll('[data-carousel]').forEach((carousel) => {
 
   const dotButtons = Array.from(dots?.querySelectorAll('button') || [])
 
-  function goToSlide(nextIndex) {
-    index = (nextIndex + slides.length) % slides.length
+  function setTrackPosition(animate = true) {
+    track.style.transition = animate ? '' : 'none'
     track.style.transform = `translateX(-${index * 100}%)`
-    dotButtons.forEach((dot, dotIndex) => dot.classList.toggle('active', dotIndex === index))
+
+    if (!animate) {
+      track.offsetHeight
+      track.style.transition = ''
+    }
+  }
+
+  function activeDotIndex() {
+    return (index - 1 + slides.length) % slides.length
+  }
+
+  function updateDots() {
+    const current = activeDotIndex()
+    dotButtons.forEach((dot, dotIndex) => dot.classList.toggle('active', dotIndex === current))
+  }
+
+  function goToSlide(nextIndex) {
+    index = nextIndex + 1
+    setTrackPosition()
+    updateDots()
+  }
+
+  function moveSlides(direction) {
+    index += direction
+    setTrackPosition()
+    updateDots()
   }
 
   function restartTimer() {
     window.clearInterval(timer)
-    timer = window.setInterval(() => goToSlide(index + 1), 3000)
+    timer = window.setInterval(() => moveSlides(1), 3000)
   }
 
   previous?.addEventListener('click', () => {
-    goToSlide(index - 1)
+    moveSlides(-1)
     restartTimer()
   })
 
   next?.addEventListener('click', () => {
-    goToSlide(index + 1)
+    moveSlides(1)
     restartTimer()
+  })
+
+  track.addEventListener('transitionend', () => {
+    if (index === 0) {
+      index = slides.length
+      setTrackPosition(false)
+    }
+
+    if (index === slides.length + 1) {
+      index = 1
+      setTrackPosition(false)
+    }
+
+    updateDots()
   })
 
   carousel.addEventListener('touchstart', (event) => {
@@ -210,12 +263,13 @@ document.querySelectorAll('[data-carousel]').forEach((carousel) => {
     const delta = endX - startX
 
     if (Math.abs(delta) > 45) {
-      goToSlide(delta > 0 ? index - 1 : index + 1)
+      moveSlides(delta > 0 ? -1 : 1)
       restartTimer()
     }
   })
 
-  goToSlide(0)
+  setTrackPosition(false)
+  updateDots()
   restartTimer()
 })
 
