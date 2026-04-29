@@ -5,6 +5,8 @@ const EMAILJS_PUBLIC_KEY = 'z2UjAu1N-IFmF2pbc'
 const modal = document.getElementById('booking-modal')
 const form = document.getElementById('inquiry-form')
 const message = document.getElementById('form-message')
+const siteMenu = document.getElementById('site-menu')
+const menuToggle = document.querySelector('.menu-toggle')
 
 if (window.emailjs) {
   window.emailjs.init({ publicKey: EMAILJS_PUBLIC_KEY })
@@ -18,6 +20,7 @@ document.querySelectorAll('.open-booking, .package-select').forEach((button) => 
       setCustomSelectValue('selected_package', packageName)
     }
 
+    closeSiteMenu()
     openBookingModal()
   })
 })
@@ -26,10 +29,17 @@ document.querySelectorAll('[data-close-modal]').forEach((button) => {
   button.addEventListener('click', closeBookingModal)
 })
 
+menuToggle?.addEventListener('click', openSiteMenu)
+
+document.querySelectorAll('[data-close-menu]').forEach((button) => {
+  button.addEventListener('click', closeSiteMenu)
+})
+
 document.addEventListener('keydown', (event) => {
   if (event.key === 'Escape') {
     closeBookingModal()
     closeAllCustomSelects()
+    closeSiteMenu()
   }
 })
 
@@ -212,6 +222,28 @@ function closeBookingModal() {
   modal.classList.remove('open')
   modal.setAttribute('aria-hidden', 'true')
   document.body.classList.remove('modal-open')
+}
+
+function openSiteMenu() {
+  if (!siteMenu) {
+    return
+  }
+
+  siteMenu.classList.add('open')
+  siteMenu.setAttribute('aria-hidden', 'false')
+  menuToggle?.setAttribute('aria-expanded', 'true')
+  document.body.classList.add('menu-open')
+}
+
+function closeSiteMenu() {
+  if (!siteMenu) {
+    return
+  }
+
+  siteMenu.classList.remove('open')
+  siteMenu.setAttribute('aria-hidden', 'true')
+  menuToggle?.setAttribute('aria-expanded', 'false')
+  document.body.classList.remove('menu-open')
 }
 
 function closeAllCustomSelects() {
