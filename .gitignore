@@ -1,0 +1,9 @@
+.DS_Store
+node_modules
+dist
+.env
+.tools
+*.ai
+/JIMENEZ_Logo.pdf
+/JIMENEZ_Logo.svg
+Sample_Images/
