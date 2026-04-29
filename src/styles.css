@@ -1284,7 +1284,33 @@ legend {
 
   .row-heading {
     display: grid;
+    justify-items: center;
     align-items: start;
+    text-align: center;
+  }
+
+  .preview-band,
+  .story-section,
+  .booking-copy {
+    justify-items: center;
+    text-align: center;
+  }
+
+  .preview-band > div,
+  .story-section > div,
+  .booking-copy {
+    max-width: 860px;
+    margin-inline: auto;
+  }
+
+  .preview-band p,
+  .story-section p,
+  .booking-copy p {
+    margin-inline: auto;
+  }
+
+  .owner-text-wrap {
+    text-align: left;
   }
 }
 
