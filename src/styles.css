@@ -171,8 +171,8 @@ a {
 }
 
 .call-pill {
-  justify-self: end;
-  grid-column: 3;
+  justify-self: start;
+  grid-column: 1;
   grid-row: 1;
 }
 
@@ -739,12 +739,12 @@ p {
 }
 
 .menu-toggle {
-  grid-column: 1;
+  grid-column: 3;
   grid-row: 1;
   display: inline-grid;
   gap: 7px;
   align-content: center;
-  justify-self: start;
+  justify-self: end;
   width: 56px;
   height: 50px;
   padding: 12px;
@@ -1249,10 +1249,6 @@ legend {
 
   .site-header nav {
     display: none;
-  }
-
-  .call-pill {
-    justify-self: end;
   }
 
   .hero,
