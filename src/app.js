@@ -25,6 +25,12 @@ document.querySelectorAll('.open-booking, .package-select').forEach((button) => 
   })
 })
 
+document.querySelectorAll('[data-package-detail]').forEach((tile) => {
+  tile.addEventListener('click', () => {
+    showPackageDetails(tile.dataset.packageDetail)
+  })
+})
+
 document.querySelectorAll('[data-close-modal]').forEach((button) => {
   button.addEventListener('click', closeBookingModal)
 })
@@ -97,7 +103,7 @@ if (form && message) {
 
     const submitButton = form.querySelector('button[type="submit"]')
     const formData = new FormData(form)
-    const addons = formData.getAll('addons').join(', ') || 'None selected'
+    const addons = 'Discuss during booking'
     const preferredTime = String(formData.get('preferred_time') || '')
 
     if (!preferredTime) {
@@ -126,7 +132,7 @@ if (form && message) {
     try {
       await window.emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, templateParams)
       form.reset()
-      setCustomSelectValue('selected_package', 'Signature Detail')
+      setCustomSelectValue('selected_package', 'Not sure - help me choose')
       setCustomSelectValue('preferred_time', '')
       showMessage(
         'Thanks - your request was sent. Jimenez Mobile Detailing will text you back to confirm availability.',
@@ -269,6 +275,27 @@ function setCustomSelectValue(name, value) {
 
   options.forEach((option) => {
     option.toggleAttribute('aria-selected', option.dataset.value === value)
+  })
+}
+
+function showPackageDetails(packageName) {
+  if (!packageName) {
+    return
+  }
+
+  document.querySelectorAll('[data-package-detail]').forEach((tile) => {
+    tile.setAttribute('aria-expanded', String(tile.dataset.packageDetail === packageName))
+  })
+
+  document.querySelectorAll('[data-package-card]').forEach((card) => {
+    const isActive = card.dataset.packageCard === packageName
+    card.classList.toggle('open', isActive)
+
+    const details = card.querySelector('.package-card-details')
+
+    if (details) {
+      details.hidden = !isActive
+    }
   })
 }
 

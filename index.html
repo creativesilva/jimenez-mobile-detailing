@@ -66,11 +66,10 @@
             src="./public/assets/images/veteran-owned-and-operated.png"
             alt="Veteran owned and operated badge"
           />
-          <p class="eyebrow">Veteran owned and operated</p>
           <h1>Premium mobile auto detailing in the Paso Robles area.</h1>
           <p class="hero-copy">
-            Jimenez Mobile Detailing brings a self-contained setup to your location, then confirms the
-            requested date and time by text.
+            At Jimenez Mobile Detailing, we bring a fully self-contained setup to your location. Submit
+            your request and we will confirm your date and time by text.
           </p>
           <div class="hero-actions">
             <button class="primary-button open-booking" type="button">Request My Detail</button>
@@ -112,60 +111,101 @@
           <p class="eyebrow">Service packages</p>
           <h2>Choose a starting point. Final details get confirmed by text.</h2>
         </div>
-        <div class="package-grid">
-          <article class="package-card">
-            <h3>Essential Detail</h3>
-            <p class="price">Starting at $95</p>
-            <p>A clean refresh for vehicles that need a solid maintenance detail.</p>
-            <ul>
-              <li>Exterior wash</li>
-              <li>Wheels and tires</li>
-              <li>Interior vacuum</li>
-              <li>Interior wipe down</li>
-              <li>Windows</li>
-            </ul>
-            <button class="primary-button package-select" type="button" data-package="Essential Detail">Select this package</button>
-          </article>
-          <article class="package-card featured-card">
-            <span class="recommended">Recommended</span>
-            <h3>Signature Detail</h3>
-            <p class="price">Starting at $165</p>
-            <p>A deeper clean with added protection and attention to commonly missed areas.</p>
-            <ul>
-              <li>Everything in Essential</li>
-              <li>Door jambs</li>
-              <li>Wheel wells</li>
-              <li>Interior protection</li>
-              <li>Floor mat cleaning</li>
-            </ul>
-            <button class="primary-button package-select" type="button" data-package="Signature Detail">Select this package</button>
-          </article>
-          <article class="package-card">
-            <h3>Complete Detail</h3>
-            <p class="price">Starting at $245</p>
-            <p>The full-service detail for vehicles needing a premium inside-and-out reset.</p>
-            <ul>
-              <li>Exterior wash</li>
-              <li>Wheels and tires</li>
-              <li>Spray ceramic sealant</li>
-              <li>Deep vacuum</li>
-              <li>Interior plastics cleaned and protected</li>
-            </ul>
-            <button class="primary-button package-select" type="button" data-package="Complete Detail">Select this package</button>
-          </article>
+        <div class="package-showcase">
+          <div class="package-picker" aria-label="Service package details">
+            <article class="package-card" data-package-card="Essential Detail">
+              <button
+                class="package-card-summary"
+                type="button"
+                data-package-detail="Essential Detail"
+                aria-controls="essential-detail-card"
+                aria-expanded="false"
+              >
+                <span class="package-tile-title">Essential Detail</span>
+                <span class="package-tile-price">Starting at $95</span>
+                <span class="package-tile-action">See details</span>
+              </button>
+              <div class="package-card-details" id="essential-detail-card" hidden>
+                <p>A clean refresh for vehicles that need a solid maintenance detail.</p>
+                <ul>
+                  <li>Exterior wash</li>
+                  <li>Wheels and tires</li>
+                  <li>Interior vacuum</li>
+                  <li>Interior wipe down</li>
+                  <li>Windows</li>
+                </ul>
+                <button class="primary-button package-select" type="button" data-package="Essential Detail">Select this package</button>
+              </div>
+            </article>
+            <article class="package-card" data-package-card="Signature Detail">
+              <button
+                class="package-card-summary"
+                type="button"
+                data-package-detail="Signature Detail"
+                aria-controls="signature-detail-card"
+                aria-expanded="false"
+              >
+                <span class="package-tile-title">Signature Detail</span>
+                <span class="package-tile-price">Starting at $165</span>
+                <span class="package-tile-action">See details</span>
+              </button>
+              <div class="package-card-details" id="signature-detail-card" hidden>
+                <p>A deeper clean with added protection and attention to commonly missed areas.</p>
+                <ul>
+                  <li>Everything in Essential</li>
+                  <li>Door jambs</li>
+                  <li>Wheel wells</li>
+                  <li>Interior protection</li>
+                  <li>Floor mat cleaning</li>
+                </ul>
+                <button class="primary-button package-select" type="button" data-package="Signature Detail">Select this package</button>
+              </div>
+            </article>
+            <article class="package-card" data-package-card="Complete Detail">
+              <button
+                class="package-card-summary"
+                type="button"
+                data-package-detail="Complete Detail"
+                aria-controls="complete-detail-card"
+                aria-expanded="false"
+              >
+                <span class="package-tile-title">Complete Detail</span>
+                <span class="package-tile-price">Starting at $245</span>
+                <span class="package-tile-action">See details</span>
+              </button>
+              <div class="package-card-details" id="complete-detail-card" hidden>
+                <p>The full-service detail for vehicles needing a premium inside-and-out reset.</p>
+                <ul>
+                  <li>Exterior wash</li>
+                  <li>Wheels and tires</li>
+                  <li>Spray ceramic sealant</li>
+                  <li>Deep vacuum</li>
+                  <li>Interior plastics cleaned and protected</li>
+                </ul>
+                <button class="primary-button package-select" type="button" data-package="Complete Detail">Select this package</button>
+              </div>
+            </article>
+          </div>
         </div>
         <p class="pricing-note">
-          Final pricing may vary based on vehicle size, condition, selected add-ons, and service location.
+          Final pricing may vary based on vehicle size, condition, and service location.
         </p>
       </section>
 
-      <section class="section preview-band">
+      <section class="section preview-band about-preview">
+        <figure class="owner-photo-frame preview-owner-photo">
+          <img
+            src="./public/assets/images/alfredo-jimenez.jpeg"
+            alt="Alfredo Jimenez, owner of Jimenez Mobile Detailing"
+          />
+        </figure>
         <div>
-          <p class="eyebrow">Self-contained mobile setup</p>
-          <h2>Built for service at your driveway, workplace, or local address.</h2>
+          <p class="eyebrow">About Jimenez</p>
+          <h2>Army veteran owned, built around service, pride, and family time.</h2>
           <p>
-            Learn how the mobile setup works and why the business centers reliability, respect, and
-            high-quality results.
+            Alfredo Jimenez proudly served our country in the Army, and now serves the Paso Robles
+            community by helping clients keep their vehicles clean, comfortable, and road-trip ready.
+            From daily drives to weekends with family, the goal is to make every ride feel cared for.
           </p>
         </div>
         <a class="secondary-button" href="./about/">About Jimenez</a>
@@ -270,16 +310,16 @@
           <div class="form-grid">
             <label>
               Package interest
-              <input type="hidden" name="selected_package" id="selected_package" value="Signature Detail" />
+              <input type="hidden" name="selected_package" id="selected_package" value="Not sure - help me choose" />
               <div class="custom-select" data-name="selected_package">
                 <button class="custom-select-button" type="button" aria-haspopup="listbox" aria-expanded="false">
-                  <span>Signature Detail</span>
+                  <span>Not sure - help me choose</span>
                 </button>
                 <div class="custom-options" role="listbox">
                   <button type="button" role="option" data-value="Essential Detail">Essential Detail</button>
-                  <button type="button" role="option" data-value="Signature Detail" aria-selected="true">Signature Detail</button>
+                  <button type="button" role="option" data-value="Signature Detail">Signature Detail</button>
                   <button type="button" role="option" data-value="Complete Detail">Complete Detail</button>
-                  <button type="button" role="option" data-value="Not sure - help me choose">Not sure - help me choose</button>
+                  <button type="button" role="option" data-value="Not sure - help me choose" aria-selected="true">Not sure - help me choose</button>
                 </div>
               </div>
             </label>
@@ -306,19 +346,6 @@
             </div>
             <small>This helps with scheduling. It is not a guaranteed appointment time.</small>
           </label>
-
-          <fieldset>
-            <legend>Add-ons or special concerns</legend>
-            <div class="addon-grid">
-              <label class="checkbox-label"><input name="addons" value="Heavy dirt or mud" type="checkbox" /> Heavy dirt or mud</label>
-              <label class="checkbox-label"><input name="addons" value="Excessive pet hair removal" type="checkbox" /> Excessive pet hair removal</label>
-              <label class="checkbox-label"><input name="addons" value="Water spot treatment" type="checkbox" /> Water spot treatment</label>
-              <label class="checkbox-label"><input name="addons" value="Decontamination" type="checkbox" /> Decontamination</label>
-              <label class="checkbox-label"><input name="addons" value="Ceramic spray protection" type="checkbox" /> Ceramic spray protection</label>
-              <label class="checkbox-label"><input name="addons" value="Carpet or seat shampoo" type="checkbox" /> Carpet or seat shampoo</label>
-              <label class="checkbox-label"><input name="addons" value="Leather conditioning" type="checkbox" /> Leather conditioning</label>
-            </div>
-          </fieldset>
 
           <label>
             Notes <span>optional</span>
