@@ -365,8 +365,14 @@ p {
 }
 
 .about-preview {
-  grid-template-columns: minmax(0, 1fr) auto;
+  grid-template-columns: minmax(0, 1fr);
   align-items: end;
+}
+
+.about-preview .eyebrow {
+  color: var(--orange);
+  font-size: 0.9rem;
+  font-weight: 900;
 }
 
 .preview-band p,
@@ -851,7 +857,7 @@ p {
   text-transform: uppercase;
 }
 
-.menu-nav a:not(.primary-button) {
+.menu-nav a {
   display: inline-flex;
   align-items: center;
 }
@@ -860,12 +866,6 @@ p {
 .menu-nav a:hover,
 .menu-nav a:focus-visible {
   color: var(--accent);
-}
-
-.menu-nav .primary-button {
-  margin-top: 8px;
-  font-family: Inter, system-ui, sans-serif;
-  font-size: 1rem;
 }
 
 .menu-contact {
@@ -1273,10 +1273,6 @@ legend {
   .about-hero-copy h1,
   .about-hero-copy p {
     margin-inline: auto;
-  }
-
-  .about-preview .secondary-button {
-    justify-self: start;
   }
 
   .booking-copy {
