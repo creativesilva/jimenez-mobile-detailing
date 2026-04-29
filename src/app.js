@@ -7,6 +7,7 @@ const form = document.getElementById('inquiry-form')
 const message = document.getElementById('form-message')
 const siteMenu = document.getElementById('site-menu')
 const menuToggle = document.querySelector('.menu-toggle')
+const defaultPackage = 'Complete Detail'
 
 if (window.emailjs) {
   window.emailjs.init({ publicKey: EMAILJS_PUBLIC_KEY })
@@ -31,6 +32,13 @@ document.querySelectorAll('[data-package-detail]').forEach((tile) => {
   })
 })
 
+document.querySelectorAll('[data-package-collapse]').forEach((button) => {
+  button.addEventListener('click', (event) => {
+    event.stopPropagation()
+    closePackageDetails(button.dataset.packageCollapse)
+  })
+})
+
 document.querySelectorAll('[data-close-modal]').forEach((button) => {
   button.addEventListener('click', closeBookingModal)
 })
@@ -52,6 +60,8 @@ document.addEventListener('keydown', (event) => {
 if (window.location.hash === '#book') {
   window.setTimeout(openBookingModal, 250)
 }
+
+setupDatePicker()
 
 document.querySelectorAll('.custom-select').forEach((select) => {
   const trigger = select.querySelector('.custom-select-button')
@@ -132,7 +142,7 @@ if (form && message) {
     try {
       await window.emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, templateParams)
       form.reset()
-      setCustomSelectValue('selected_package', 'Not sure - help me choose')
+      setCustomSelectValue('selected_package', defaultPackage)
       setCustomSelectValue('preferred_time', '')
       showMessage(
         'Thanks - your request was sent. Jimenez Mobile Detailing will text you back to confirm availability.',
@@ -278,10 +288,41 @@ function setCustomSelectValue(name, value) {
   })
 }
 
+function setupDatePicker() {
+  const dateInput = document.querySelector('input[name="preferred_date"]')
+
+  if (!dateInput) {
+    return
+  }
+
+  const today = new Date()
+  today.setMinutes(today.getMinutes() - today.getTimezoneOffset())
+  dateInput.min = today.toISOString().slice(0, 10)
+
+  dateInput.addEventListener('click', openNativeDatePicker)
+  dateInput.addEventListener('focus', openNativeDatePicker)
+}
+
+function openNativeDatePicker(event) {
+  const input = event.currentTarget
+
+  if (typeof input.showPicker !== 'function') {
+    return
+  }
+
+  try {
+    input.showPicker()
+  } catch (error) {
+    // Some browsers only allow showPicker from a direct tap/click.
+  }
+}
+
 function showPackageDetails(packageName) {
   if (!packageName) {
     return
   }
+
+  setCustomSelectValue('selected_package', packageName)
 
   document.querySelectorAll('[data-package-detail]').forEach((tile) => {
     tile.setAttribute('aria-expanded', String(tile.dataset.packageDetail === packageName))
@@ -295,6 +336,28 @@ function showPackageDetails(packageName) {
 
     if (details) {
       details.hidden = !isActive
+    }
+  })
+}
+
+function closePackageDetails(packageName) {
+  document.querySelectorAll('[data-package-detail]').forEach((tile) => {
+    if (!packageName || tile.dataset.packageDetail === packageName) {
+      tile.setAttribute('aria-expanded', 'false')
+    }
+  })
+
+  document.querySelectorAll('[data-package-card]').forEach((card) => {
+    if (packageName && card.dataset.packageCard !== packageName) {
+      return
+    }
+
+    card.classList.remove('open')
+
+    const details = card.querySelector('.package-card-details')
+
+    if (details) {
+      details.hidden = true
     }
   })
 }
