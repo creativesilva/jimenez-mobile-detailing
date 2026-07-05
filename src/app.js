@@ -61,8 +61,6 @@ if (window.location.hash === '#book') {
   window.setTimeout(openBookingModal, 250)
 }
 
-setupDatePicker()
-
 document.querySelectorAll('.custom-select').forEach((select) => {
   const trigger = select.querySelector('.custom-select-button')
   const label = trigger?.querySelector('span')
@@ -114,13 +112,8 @@ if (form && message) {
     const submitButton = form.querySelector('button[type="submit"]')
     const formData = new FormData(form)
     const addons = 'Discuss during booking'
-    const preferredTime = String(formData.get('preferred_time') || '')
-
-    if (!preferredTime) {
-      showMessage('Please choose a preferred time window before sending your request.', 'error')
-      document.querySelector('.custom-select[data-name="preferred_time"] .custom-select-button')?.focus()
-      return
-    }
+    const preferredDate = 'Custom scheduling by text'
+    const preferredTime = 'Friday through Sunday, 8:30 AM to 4:00 PM preferred'
 
     const templateParams = {
       from_name: String(formData.get('from_name') || ''),
@@ -128,7 +121,7 @@ if (form && message) {
       vehicle_info: String(formData.get('vehicle_info') || 'Not provided'),
       service_location: String(formData.get('service_location') || ''),
       selected_package: String(formData.get('selected_package') || ''),
-      preferred_date: String(formData.get('preferred_date') || ''),
+      preferred_date: preferredDate,
       preferred_time: preferredTime,
       addons,
       notes: String(formData.get('notes') || 'None provided'),
@@ -143,7 +136,6 @@ if (form && message) {
       await window.emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, templateParams)
       form.reset()
       setCustomSelectValue('selected_package', defaultPackage)
-      setCustomSelectValue('preferred_time', '')
       showMessage(
         'Thanks - your request was sent. Jimenez Mobile Detailing will text you back to confirm availability.',
         'success',
@@ -340,35 +332,6 @@ function setCustomSelectValue(name, value) {
   options.forEach((option) => {
     option.toggleAttribute('aria-selected', option.dataset.value === value)
   })
-}
-
-function setupDatePicker() {
-  const dateInput = document.querySelector('input[name="preferred_date"]')
-
-  if (!dateInput) {
-    return
-  }
-
-  const today = new Date()
-  today.setMinutes(today.getMinutes() - today.getTimezoneOffset())
-  dateInput.min = today.toISOString().slice(0, 10)
-
-  dateInput.addEventListener('click', openNativeDatePicker)
-  dateInput.addEventListener('focus', openNativeDatePicker)
-}
-
-function openNativeDatePicker(event) {
-  const input = event.currentTarget
-
-  if (typeof input.showPicker !== 'function') {
-    return
-  }
-
-  try {
-    input.showPicker()
-  } catch (error) {
-    // Some browsers only allow showPicker from a direct tap/click.
-  }
 }
 
 function showPackageDetails(packageName) {

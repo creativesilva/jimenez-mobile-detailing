@@ -6,7 +6,7 @@
     <title>Jimenez Mobile Detailing | Mobile Auto Detailing in Paso Robles</title>
     <meta
       name="description"
-      content="Veteran owned mobile auto detailing in the Paso Robles area. Request a detail with your location, preferred date, and best time window."
+      content="Veteran owned mobile auto detailing in the Paso Robles area. Request a detail with your location, package interest, and vehicle notes."
     />
     <link rel="canonical" href="https://creativesilva.github.io/jimenez-mobile-detailing/" />
     <meta name="theme-color" content="#050505" />
@@ -120,7 +120,7 @@
                 aria-expanded="false"
               >
                 <span class="package-tile-title">Essential Detail</span>
-                <span class="package-tile-price">Starting at $95</span>
+                <span class="package-tile-price">Contact for pricing</span>
                 <span class="package-tile-action">See details</span>
               </button>
               <div class="package-card-details" id="essential-detail-card" hidden>
@@ -145,7 +145,7 @@
                 aria-expanded="false"
               >
                 <span class="package-tile-title">Signature Detail</span>
-                <span class="package-tile-price">Starting at $165</span>
+                <span class="package-tile-price">Contact for pricing</span>
                 <span class="package-tile-action">See details</span>
               </button>
               <div class="package-card-details" id="signature-detail-card" hidden>
@@ -170,7 +170,7 @@
                 aria-expanded="false"
               >
                 <span class="package-tile-title">Complete Detail</span>
-                <span class="package-tile-price">Starting at $245</span>
+                <span class="package-tile-price">Contact for pricing</span>
                 <span class="package-tile-action">See details</span>
               </button>
               <div class="package-card-details" id="complete-detail-card" hidden>
@@ -188,7 +188,7 @@
           </div>
         </div>
         <p class="pricing-note">
-          Final pricing may vary based on vehicle size, condition, and service location.
+          Pricing is confirmed by text and may vary based on vehicle size, condition, and service location.
         </p>
       </section>
 
@@ -199,7 +199,7 @@
           <div class="owner-text-wrap">
             <figure class="owner-photo-frame inline-owner-photo">
               <img
-                src="./public/assets/images/alfredo-jimenez.jpeg"
+                src="./public/assets/images/alfredo-jimenez-headshot.jpg"
                 alt="Alfredo Jimenez, owner of Jimenez Mobile Detailing"
               />
             </figure>
@@ -250,8 +250,9 @@
           <p class="eyebrow">Request a detail</p>
           <h2>Send the details once. Get a confirmation text back.</h2>
           <p>
-            Pick the package you are leaning toward, add your location, and choose a preferred date and
-            time window. The schedule is confirmed only after Jimenez Mobile Detailing texts you back.
+            Pick the package you are leaning toward, add your location, and share any helpful vehicle
+            notes. Standard service hours are Friday through Sunday, 8:30 AM to 4:00 PM, with custom
+            scheduling handled by text.
           </p>
           <div class="direct-actions">
             <a href="sms:+18055914562">Text 805-591-4562</a>
@@ -307,54 +308,36 @@
             />
           </label>
 
-          <div class="form-grid">
-            <label>
-              Package interest
-              <input type="hidden" name="selected_package" id="selected_package" value="Complete Detail" />
-              <div class="custom-select" data-name="selected_package">
-                <button class="custom-select-button" type="button" aria-haspopup="listbox" aria-expanded="false">
-                  <span>Complete Detail</span>
-                </button>
-                <div class="custom-options" role="listbox">
-                  <button type="button" role="option" data-value="Essential Detail">Essential Detail</button>
-                  <button type="button" role="option" data-value="Signature Detail">Signature Detail</button>
-                  <button type="button" role="option" data-value="Complete Detail" aria-selected="true">Complete Detail</button>
-                  <button type="button" role="option" data-value="Not sure - help me choose">Not sure - help me choose</button>
-                </div>
+          <label>
+            Package interest
+            <input type="hidden" name="selected_package" id="selected_package" value="Complete Detail" />
+            <div class="custom-select" data-name="selected_package">
+              <button class="custom-select-button" type="button" aria-haspopup="listbox" aria-expanded="false">
+                <span>Complete Detail</span>
+              </button>
+              <div class="custom-options" role="listbox">
+                <button type="button" role="option" data-value="Essential Detail">Essential Detail</button>
+                <button type="button" role="option" data-value="Signature Detail">Signature Detail</button>
+                <button type="button" role="option" data-value="Complete Detail" aria-selected="true">Complete Detail</button>
+                <button type="button" role="option" data-value="Not sure - help me choose">Not sure - help me choose</button>
               </div>
-            </label>
-            <label>
-              Preferred service date
-              <input name="preferred_date" type="date" required />
-            </label>
+            </div>
+          </label>
+
+          <div class="service-hours" aria-label="Service scheduling information">
+            <strong>Preferred service hours</strong>
+            <p>Friday through Sunday, 8:30 AM to 4:00 PM.</p>
+            <small>Need a different time? Submit your request and Alfredo will text you about custom scheduling.</small>
           </div>
 
           <label>
-            Preferred time window
-            <input type="hidden" name="preferred_time" id="preferred_time" required />
-            <div class="custom-select" data-name="preferred_time">
-              <button class="custom-select-button" type="button" aria-haspopup="listbox" aria-expanded="false">
-                <span>Choose a window</span>
-              </button>
-              <div class="custom-options" role="listbox">
-                <button type="button" role="option" data-value="Morning">Morning</button>
-                <button type="button" role="option" data-value="Midday">Midday</button>
-                <button type="button" role="option" data-value="Afternoon">Afternoon</button>
-                <button type="button" role="option" data-value="Evening">Evening</button>
-                <button type="button" role="option" data-value="Flexible / text me options">Flexible / text me options</button>
-              </div>
-            </div>
-            <small>This helps with scheduling. It is not a guaranteed appointment time.</small>
-          </label>
-
-          <label>
             Notes <span>optional</span>
-            <textarea name="notes" rows="4" placeholder="Tell us anything helpful about the vehicle or location."></textarea>
+            <textarea name="notes" rows="4" placeholder="Tell us anything helpful about the vehicle, location, or scheduling needs."></textarea>
           </label>
 
           <label class="checkbox-label consent">
             <input type="checkbox" required />
-            I understand this date and time are requests only and are not confirmed until Jimenez Mobile Detailing texts me back.
+            I understand availability, pricing, and final scheduling are confirmed by text from Jimenez Mobile Detailing.
           </label>
 
           <button class="primary-button form-submit" type="submit">Request My Detail</button>

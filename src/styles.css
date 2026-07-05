@@ -469,6 +469,7 @@ p {
 
 .package-card-summary {
   display: grid;
+  justify-items: center;
   gap: 9px;
   width: 100%;
   min-height: 154px;
@@ -476,11 +477,11 @@ p {
   border: 0;
   background: transparent;
   color: inherit;
-  text-align: left;
+  text-align: center;
 }
 
 .package-card.open .package-card-summary {
-  padding-right: 52px;
+  padding-inline: 52px;
 }
 
 .package-card-summary:focus-visible {
@@ -502,7 +503,7 @@ p {
 }
 
 .package-tile-action {
-  justify-self: start;
+  justify-self: center;
   align-self: end;
   margin-top: auto;
   padding: 9px 13px;
@@ -519,8 +520,10 @@ p {
 
 .package-card-details {
   display: grid;
+  justify-items: center;
   gap: 14px;
   padding: 0 18px 18px;
+  text-align: center;
 }
 
 .package-card-details[hidden] {
@@ -540,6 +543,7 @@ p {
 
 .package-card-details ul {
   display: grid;
+  justify-items: center;
   gap: 9px;
   margin: 0 0 8px;
   padding: 0;
@@ -986,17 +990,6 @@ textarea {
   padding: 12px 13px;
 }
 
-input[type='date'] {
-  color-scheme: dark;
-  cursor: pointer;
-}
-
-input[type='date']::-webkit-calendar-picker-indicator {
-  cursor: pointer;
-  filter: invert(65%) sepia(77%) saturate(1160%) hue-rotate(359deg) brightness(104%) contrast(104%);
-  opacity: 1;
-}
-
 input:focus,
 select:focus,
 textarea:focus {
@@ -1069,6 +1062,30 @@ textarea:focus {
 
 textarea {
   resize: vertical;
+}
+
+.service-hours {
+  display: grid;
+  gap: 7px;
+  padding: 16px;
+  border: 1px solid rgba(255, 170, 0, 0.24);
+  border-radius: 8px;
+  background: rgba(255, 170, 0, 0.08);
+}
+
+.service-hours strong {
+  color: var(--white);
+  font-weight: 900;
+}
+
+.service-hours p,
+.service-hours small {
+  margin: 0;
+  color: var(--soft-white);
+}
+
+.service-hours small {
+  color: var(--muted);
 }
 
 fieldset {
