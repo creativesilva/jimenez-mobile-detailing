@@ -1389,3 +1389,101 @@ legend {
     justify-content: center;
   }
 }
+
+/* Community / giving back page */
+.community-hero {
+  max-width: 940px;
+}
+
+.community-hero-figure {
+  margin: clamp(28px, 5vw, 44px) 0 0;
+}
+
+.community-hero-figure img {
+  display: block;
+  width: 100%;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  box-shadow: var(--shadow);
+}
+
+.community-hero-figure figcaption {
+  margin-top: 14px;
+  color: var(--muted);
+  font-size: 0.95rem;
+  line-height: 1.6;
+}
+
+.community-prose {
+  max-width: 760px;
+  margin-inline: auto;
+}
+
+.community-prose p {
+  font-size: 1.12rem;
+}
+
+.community-prose p + p {
+  margin-top: 20px;
+}
+
+.community-winners-note {
+  margin-top: 14px;
+}
+
+.winners-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.winner-card {
+  display: grid;
+  gap: 10px;
+  padding: 28px 24px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  text-align: center;
+  background:
+    radial-gradient(circle at top right, rgba(255, 170, 0, 0.12), transparent 40%),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.02)),
+    var(--dark-card);
+}
+
+.winner-first {
+  border-color: rgba(255, 170, 0, 0.55);
+}
+
+.winner-place {
+  color: var(--accent);
+  font-size: 0.82rem;
+  font-weight: 900;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.winner-award {
+  font-size: 1.5rem;
+  font-weight: 900;
+  color: var(--white);
+}
+
+.winner-name {
+  font-size: 1.6rem;
+  color: var(--soft-white);
+}
+
+.community-gallery .carousel .gallery-card img {
+  object-fit: contain;
+  background: #0b0b0b;
+}
+
+.community-close {
+  text-align: left;
+}
+
+@media (max-width: 720px) {
+  .winners-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
