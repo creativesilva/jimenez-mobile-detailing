@@ -1395,11 +1395,18 @@ legend {
   max-width: 940px;
 }
 
-.community-hero-figure {
-  margin: clamp(28px, 5vw, 44px) 0 0;
+.community-prose {
+  max-width: 760px;
+  margin-inline: auto;
 }
 
-.community-hero-figure img {
+.community-story-figure {
+  float: right;
+  width: min(340px, 42%);
+  margin: 6px 0 18px 28px;
+}
+
+.community-story-figure img {
   display: block;
   width: 100%;
   border: 1px solid var(--border);
@@ -1407,16 +1414,11 @@ legend {
   box-shadow: var(--shadow);
 }
 
-.community-hero-figure figcaption {
-  margin-top: 14px;
-  color: var(--muted);
-  font-size: 0.95rem;
-  line-height: 1.6;
-}
-
-.community-prose {
-  max-width: 760px;
-  margin-inline: auto;
+.community-story-figure figcaption {
+  margin-top: 12px;
+  color: rgba(255, 255, 255, 0.62);
+  font-size: 0.85rem;
+  line-height: 1.55;
 }
 
 .community-prose p {
@@ -1500,5 +1502,11 @@ legend {
 @media (max-width: 720px) {
   .winners-grid {
     grid-template-columns: minmax(0, 1fr);
+  }
+
+  .community-story-figure {
+    float: none;
+    width: 100%;
+    margin: 0 0 22px;
   }
 }
