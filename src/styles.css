@@ -1450,8 +1450,23 @@ legend {
     var(--dark-card);
 }
 
+.winner-photo {
+  width: 112px;
+  height: 112px;
+  margin: 0 auto 4px;
+  border-radius: 50%;
+  object-fit: cover;
+  background: #1a1a1a;
+  border: 2px solid rgba(255, 255, 255, 0.16);
+  box-shadow: 0 10px 26px rgba(0, 0, 0, 0.35);
+}
+
 .winner-first {
   border-color: rgba(255, 170, 0, 0.55);
+}
+
+.winner-first .winner-photo {
+  border-color: var(--accent);
 }
 
 .winner-place {
