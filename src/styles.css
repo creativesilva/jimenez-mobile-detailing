@@ -1464,8 +1464,7 @@ legend {
   border-radius: 8px;
   text-align: center;
   background:
-    radial-gradient(circle at top right, rgba(255, 170, 0, 0.12), transparent 40%),
-    linear-gradient(180deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.02)),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.06), rgba(255, 255, 255, 0.02)),
     var(--dark-card);
 }
 
@@ -1480,20 +1479,66 @@ legend {
   box-shadow: 0 10px 26px rgba(0, 0, 0, 0.35);
 }
 
-.winner-first {
-  border-color: rgba(255, 170, 0, 0.55);
-}
-
-.winner-first .winner-photo {
-  border-color: var(--accent);
-}
-
 .winner-place {
   color: var(--accent);
   font-size: 0.82rem;
   font-weight: 900;
   letter-spacing: 0.12em;
   text-transform: uppercase;
+}
+
+/* Gold */
+.winner-first {
+  border-color: rgba(255, 207, 92, 0.6);
+  background:
+    radial-gradient(circle at 50% -10%, rgba(255, 207, 92, 0.22), transparent 60%),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.06), rgba(255, 255, 255, 0.02)),
+    var(--dark-card);
+}
+
+.winner-first .winner-photo {
+  border-color: #ffcf5c;
+  box-shadow: 0 10px 26px rgba(255, 207, 92, 0.28);
+}
+
+.winner-first .winner-place {
+  color: #ffcf5c;
+}
+
+/* Silver */
+.winner-second {
+  border-color: rgba(212, 219, 228, 0.5);
+  background:
+    radial-gradient(circle at 50% -10%, rgba(212, 219, 228, 0.18), transparent 60%),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.06), rgba(255, 255, 255, 0.02)),
+    var(--dark-card);
+}
+
+.winner-second .winner-photo {
+  border-color: #d4dbe4;
+  box-shadow: 0 10px 26px rgba(212, 219, 228, 0.22);
+}
+
+.winner-second .winner-place {
+  color: #dbe2ea;
+}
+
+/* Bronze */
+.winner-third {
+  border-color: rgba(211, 138, 79, 0.55);
+  background:
+    radial-gradient(circle at 50% -10%, rgba(211, 138, 79, 0.2), transparent 60%),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.06), rgba(255, 255, 255, 0.02)),
+    var(--dark-card);
+}
+
+.winner-third .winner-photo {
+  border-color: #d38a4f;
+  box-shadow: 0 10px 26px rgba(211, 138, 79, 0.24);
+}
+
+.winner-third .winner-place {
+  color: #e2a066;
 }
 
 .winner-award {
@@ -1509,6 +1554,32 @@ legend {
 
 .community-gallery {
   max-width: 1280px;
+}
+
+/* Home page community / giving-back teaser band */
+.community-band {
+  display: grid;
+  grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr);
+  gap: clamp(24px, 5vw, 56px);
+  align-items: center;
+}
+
+.community-band-media img {
+  display: block;
+  width: 100%;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  box-shadow: var(--shadow);
+}
+
+.community-band-copy .primary-button {
+  margin-top: 24px;
+}
+
+@media (max-width: 820px) {
+  .community-band {
+    grid-template-columns: minmax(0, 1fr);
+  }
 }
 
 .community-gallery-hint {
