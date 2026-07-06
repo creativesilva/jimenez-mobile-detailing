@@ -337,9 +337,14 @@ p {
 }
 
 .services-section {
+  width: min(1320px, calc(100% - clamp(24px, 6vw, 72px)));
   max-width: none;
+  margin-inline: auto;
+  margin-block: clamp(24px, 5vw, 56px);
+  border-radius: clamp(20px, 3vw, 34px);
   background: var(--warm-panel);
   color: #171717;
+  box-shadow: var(--shadow);
 }
 
 .services-section .section-heading,
