@@ -1495,9 +1495,241 @@ legend {
   color: var(--soft-white);
 }
 
-.community-gallery .carousel .gallery-card img {
+.community-gallery {
+  max-width: 1280px;
+}
+
+.community-gallery-hint {
+  margin-top: 12px;
+}
+
+/* Peek carousel: large centered slide with neighbors peeking */
+.peek-gallery {
+  position: relative;
+  --peek-slide: min(600px, 58vw);
+}
+
+.peek-track {
+  display: flex;
+  gap: clamp(14px, 2vw, 26px);
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  padding-inline: calc((100% - var(--peek-slide)) / 2);
+  padding-block: 10px;
+  scrollbar-width: none;
+}
+
+.peek-track::-webkit-scrollbar {
+  display: none;
+}
+
+.peek-slide {
+  flex: 0 0 var(--peek-slide);
+  scroll-snap-align: center;
+  display: block;
+  padding: 0;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  overflow: hidden;
+  background: #0f0f0f;
+  color: var(--white);
+  cursor: zoom-in;
+  box-shadow: var(--shadow);
+  opacity: 0.55;
+  transition: opacity 320ms ease, transform 320ms ease;
+}
+
+.peek-slide.is-active {
+  opacity: 1;
+}
+
+.peek-slide img {
+  display: block;
+  width: 100%;
+  height: clamp(300px, 40vw, 500px);
   object-fit: contain;
-  background: #0b0b0b;
+  background: #0f0f0f;
+}
+
+.peek-caption {
+  display: grid;
+  gap: 3px;
+  padding: 14px 18px;
+  text-align: left;
+}
+
+.peek-place {
+  color: var(--accent);
+  font-size: 0.8rem;
+  font-weight: 900;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.peek-caption strong {
+  font-size: 1.15rem;
+}
+
+.peek-arrow {
+  position: absolute;
+  top: clamp(150px, 20vw, 250px);
+  z-index: 3;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  padding: 0;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 50%;
+  background: rgba(5, 5, 5, 0.72);
+  color: var(--white);
+  transform: translateY(-50%);
+}
+
+.peek-arrow svg {
+  display: block;
+  width: 22px;
+  height: 22px;
+}
+
+.peek-prev {
+  left: clamp(6px, 2vw, 22px);
+}
+
+.peek-next {
+  right: clamp(6px, 2vw, 22px);
+}
+
+.peek-dots {
+  display: flex;
+  justify-content: center;
+  gap: 9px;
+  margin-top: 22px;
+}
+
+.peek-dots button {
+  width: 10px;
+  height: 10px;
+  padding: 0;
+  border: 0;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.4);
+}
+
+.peek-dots button.active {
+  width: 30px;
+  background: var(--accent);
+}
+
+/* Lightbox */
+.lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: clamp(16px, 4vw, 52px);
+  background: rgba(0, 0, 0, 0.92);
+  backdrop-filter: blur(6px);
+}
+
+.lightbox[hidden] {
+  display: none;
+}
+
+.lightbox-figure {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  margin: 0;
+  max-width: min(960px, 100%);
+}
+
+.lightbox-img {
+  max-width: 100%;
+  max-height: 76vh;
+  object-fit: contain;
+  border-radius: 10px;
+  background: #0f0f0f;
+}
+
+.lightbox-caption {
+  color: rgba(255, 255, 255, 0.86);
+  font-size: 0.98rem;
+  font-weight: 600;
+  text-align: center;
+}
+
+.lightbox-close {
+  position: absolute;
+  top: clamp(14px, 3vw, 24px);
+  right: clamp(14px, 3vw, 28px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 46px;
+  height: 46px;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 50%;
+  background: rgba(5, 5, 5, 0.6);
+  color: var(--white);
+  font-size: 1.9rem;
+  line-height: 1;
+}
+
+.lightbox-arrow {
+  position: absolute;
+  top: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 52px;
+  height: 52px;
+  padding: 0;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 50%;
+  background: rgba(5, 5, 5, 0.6);
+  color: var(--white);
+  transform: translateY(-50%);
+}
+
+.lightbox-arrow svg {
+  display: block;
+  width: 24px;
+  height: 24px;
+}
+
+.lightbox-prev {
+  left: clamp(8px, 3vw, 30px);
+}
+
+.lightbox-next {
+  right: clamp(8px, 3vw, 30px);
+}
+
+body.lightbox-open {
+  overflow: hidden;
+}
+
+@media (max-width: 1024px) {
+  .peek-gallery {
+    --peek-slide: min(520px, 70vw);
+  }
+}
+
+@media (max-width: 640px) {
+  .peek-gallery {
+    --peek-slide: 82vw;
+  }
+
+  .peek-arrow {
+    width: 42px;
+    height: 42px;
+  }
 }
 
 .community-close {
