@@ -256,7 +256,7 @@ p {
 }
 
 .hero-copy,
-.page-hero p {
+.page-hero p:not(.eyebrow) {
   max-width: 650px;
   font-size: 1.18rem;
   margin-inline: auto;
@@ -376,7 +376,6 @@ p {
 
 .about-preview .eyebrow {
   color: var(--orange);
-  font-size: 0.9rem;
   font-weight: 900;
 }
 
@@ -1398,6 +1397,19 @@ legend {
 /* Community / giving back page */
 .community-hero {
   max-width: 940px;
+}
+
+/* Tighter, consistent vertical rhythm across the community page */
+.community-hero,
+.community-story,
+.community-winners,
+.community-gallery,
+.community-close {
+  padding-block: clamp(30px, 4vw, 54px);
+}
+
+.community-close .eyebrow {
+  color: var(--orange);
 }
 
 .community-prose {
