@@ -111,9 +111,6 @@ if (form && message) {
 
     const submitButton = form.querySelector('button[type="submit"]')
     const formData = new FormData(form)
-    const addons = 'Discuss during booking'
-    const preferredDate = 'Custom scheduling by text'
-    const preferredTime = 'Friday through Sunday, 8:30 AM to 4:00 PM preferred'
 
     const templateParams = {
       from_name: String(formData.get('from_name') || ''),
@@ -121,9 +118,6 @@ if (form && message) {
       vehicle_info: String(formData.get('vehicle_info') || 'Not provided'),
       service_location: String(formData.get('service_location') || ''),
       selected_package: String(formData.get('selected_package') || ''),
-      preferred_date: preferredDate,
-      preferred_time: preferredTime,
-      addons,
       notes: String(formData.get('notes') || 'None provided'),
       reply_to: 'jimenezmobiledetailing805@gmail.com',
     }
