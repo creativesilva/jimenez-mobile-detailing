@@ -610,3 +610,53 @@ if (lightbox) {
     { passive: true },
   )
 }
+
+document.querySelectorAll('[data-ba-slider]').forEach((slider) => {
+  const handle = slider.querySelector('.ba-handle')
+  let dragging = false
+
+  function setPosition(clientX) {
+    const rect = slider.getBoundingClientRect()
+    let percent = ((clientX - rect.left) / rect.width) * 100
+    percent = Math.max(0, Math.min(100, percent))
+    slider.style.setProperty('--ba-pos', percent + '%')
+  }
+
+  function startDrag(event) {
+    dragging = true
+    slider.setPointerCapture?.(event.pointerId)
+    setPosition(event.clientX)
+  }
+
+  function moveDrag(event) {
+    if (!dragging) {
+      return
+    }
+
+    setPosition(event.clientX)
+  }
+
+  function endDrag() {
+    dragging = false
+  }
+
+  slider.addEventListener('pointerdown', startDrag)
+  slider.addEventListener('pointermove', moveDrag)
+  slider.addEventListener('pointerup', endDrag)
+  slider.addEventListener('pointercancel', endDrag)
+
+  handle?.addEventListener('keydown', (event) => {
+    const current = parseFloat(getComputedStyle(slider).getPropertyValue('--ba-pos')) || 50
+    const rect = slider.getBoundingClientRect()
+
+    if (event.key === 'ArrowLeft') {
+      event.preventDefault()
+      slider.style.setProperty('--ba-pos', Math.max(0, current - 4) + '%')
+    }
+
+    if (event.key === 'ArrowRight') {
+      event.preventDefault()
+      slider.style.setProperty('--ba-pos', Math.min(100, current + 4) + '%')
+    }
+  })
+})
