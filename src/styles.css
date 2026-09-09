@@ -1945,3 +1945,28 @@ body.lightbox-open {
   border-color: var(--accent);
   box-shadow: 0 0 0 3px rgba(255, 170, 0, 0.4);
 }
+
+.ba-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: clamp(18px, 2.6vw, 32px);
+}
+
+.ba-figure {
+  margin: 0;
+}
+
+.ba-caption {
+  margin-top: 12px;
+  text-align: center;
+  color: var(--soft-white);
+  font-weight: 900;
+  font-size: 0.95rem;
+  letter-spacing: 0.02em;
+}
+
+@media (max-width: 760px) {
+  .ba-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
