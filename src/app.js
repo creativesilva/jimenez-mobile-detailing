@@ -7,7 +7,7 @@ const form = document.getElementById('inquiry-form')
 const message = document.getElementById('form-message')
 const siteMenu = document.getElementById('site-menu')
 const menuToggle = document.querySelector('.menu-toggle')
-const defaultPackage = 'Complete Detail'
+const defaultPackage = 'Additional Services'
 
 if (window.emailjs) {
   window.emailjs.init({ publicKey: EMAILJS_PUBLIC_KEY })

@@ -161,65 +161,33 @@
                 <button class="primary-button package-select" type="button" data-package="Signature Detail">Select this package</button>
               </div>
             </article>
-            <article class="package-card" data-package-card="Complete Detail">
-              <button class="package-collapse" type="button" data-package-collapse="Complete Detail" aria-label="Collapse Complete Detail details">×</button>
+            <article class="package-card" data-package-card="Additional Services">
+              <button class="package-collapse" type="button" data-package-collapse="Additional Services" aria-label="Collapse Additional Services details">×</button>
               <button
                 class="package-card-summary"
                 type="button"
-                data-package-detail="Complete Detail"
-                aria-controls="complete-detail-card"
+                data-package-detail="Additional Services"
+                aria-controls="additional-services-card"
                 aria-expanded="false"
               >
-                <span class="package-tile-title">Complete Detail</span>
+                <span class="package-tile-title">Additional Services</span>
                 <span class="package-tile-price">Contact for pricing</span>
                 <span class="package-tile-action">See details</span>
               </button>
-              <div class="package-card-details" id="complete-detail-card" hidden>
-                <p>The full-service detail for vehicles needing a premium inside-and-out reset.</p>
+              <div class="package-card-details" id="additional-services-card" hidden>
+                <p>Choose any options to add onto your detail package.</p>
                 <ul>
-                  <li>Exterior wash</li>
-                  <li>Wheels and tires</li>
-                  <li>Spray ceramic sealant</li>
-                  <li>Deep vacuum</li>
-                  <li>Interior plastics cleaned and protected</li>
+                  <li>High-temperature steam cleaning</li>
+                  <li>Paint decontamination</li>
+                  <li>Ceramic sealant options</li>
+                  <li>Carpet and upholstery shampooing</li>
+                  <li>Water spot treatment</li>
+                  <li>Leather conditioning</li>
                 </ul>
-                <button class="primary-button package-select" type="button" data-package="Complete Detail">Select this package</button>
+                <button class="primary-button package-select" type="button" data-package="Additional Services">Select this package</button>
               </div>
             </article>
           </div>
-        </div>
-        <div class="addons-block">
-          <div class="addons-head">
-            <p class="eyebrow">Detail add-ons</p>
-            <h3>Customize any package with add-on services.</h3>
-            <p>Add any of these on top of your detail. Tell Alfredo which ones you want when you book, and he will confirm the details and pricing by text.</p>
-          </div>
-          <ul class="addons-grid">
-            <li>
-              <strong>High-temperature steam cleaning</strong>
-              <span>Deep, chemical-light sanitizing for vents, seams, and hard-to-reach grime.</span>
-            </li>
-            <li>
-              <strong>Paint decontamination</strong>
-              <span>Clay treatment that pulls bonded contaminants out of the paint for a smooth finish.</span>
-            </li>
-            <li>
-              <strong>Ceramic sealant protection</strong>
-              <span>A durable protective layer that boosts gloss and helps repel water and dirt.</span>
-            </li>
-            <li>
-              <strong>Carpet &amp; upholstery shampoo</strong>
-              <span>Hot-water extraction that lifts stains and odors out of fabric and mats.</span>
-            </li>
-            <li>
-              <strong>Water spot removal</strong>
-              <span>Clears mineral and hard-water spots from paint, glass, and trim.</span>
-            </li>
-            <li>
-              <strong>Leather cleaning &amp; conditioning</strong>
-              <span>Cleans and softens leather surfaces to keep them supple and help prevent cracking.</span>
-            </li>
-          </ul>
         </div>
         <p class="pricing-note">
           Pricing is confirmed by text and may vary based on vehicle size, condition, and service location.
@@ -364,15 +332,15 @@
 
           <label>
             Package interest
-            <input type="hidden" name="selected_package" id="selected_package" value="Complete Detail" />
+            <input type="hidden" name="selected_package" id="selected_package" value="Additional Services" />
             <div class="custom-select" data-name="selected_package">
               <button class="custom-select-button" type="button" aria-haspopup="listbox" aria-expanded="false">
-                <span>Complete Detail</span>
+                <span>Additional Services</span>
               </button>
               <div class="custom-options" role="listbox">
                 <button type="button" role="option" data-value="Essential Detail">Essential Detail</button>
                 <button type="button" role="option" data-value="Signature Detail">Signature Detail</button>
-                <button type="button" role="option" data-value="Complete Detail" aria-selected="true">Complete Detail</button>
+                <button type="button" role="option" data-value="Additional Services" aria-selected="true">Additional Services</button>
                 <button type="button" role="option" data-value="Not sure - help me choose">Not sure - help me choose</button>
               </div>
             </div>
