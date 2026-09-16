@@ -714,12 +714,16 @@ p {
 
 .inquiry-form {
   display: grid;
-  gap: 18px;
-  padding: clamp(18px, 4vw, 30px);
+  gap: 13px;
+  padding: clamp(15px, 3vw, 20px);
   border: 1px solid var(--border);
   border-radius: 8px;
   background: rgba(255, 255, 255, 0.06);
   box-shadow: var(--shadow);
+}
+
+.inquiry-form label {
+  gap: 6px;
 }
 
 .booking-card {
@@ -942,17 +946,17 @@ p {
 .modal-heading {
   display: grid;
   justify-items: center;
-  gap: 12px;
-  padding: 4px clamp(20px, 4vw, 34px) 24px;
+  gap: 6px;
+  padding: 0 clamp(20px, 4vw, 34px) 12px;
   text-align: center;
 }
 
 .modal-heading img {
-  width: min(250px, 82%);
+  width: min(168px, 56%);
 }
 
 .modal-heading h2 {
-  font-size: clamp(2rem, 5vw, 4rem);
+  font-size: clamp(1.5rem, 3.2vw, 2.05rem);
 }
 
 .modal-panel .inquiry-form {
@@ -1070,8 +1074,8 @@ textarea {
 
 .service-hours {
   display: grid;
-  gap: 7px;
-  padding: 16px;
+  gap: 4px;
+  padding: 11px 14px;
   border: 1px solid rgba(255, 170, 0, 0.24);
   border-radius: 8px;
   background: rgba(255, 170, 0, 0.08);
@@ -2075,4 +2079,65 @@ body.lightbox-open {
 .community-band-copy {
   text-align: center;
   justify-items: center;
+}
+
+/* Payments section */
+.payments-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: clamp(14px, 2vw, 22px);
+  max-width: 1000px;
+  margin-inline: auto;
+}
+
+.payment-card {
+  display: grid;
+  gap: 8px;
+  justify-items: center;
+  text-align: center;
+  padding: 30px 24px;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  background:
+    radial-gradient(circle at top, rgba(255, 170, 0, 0.1), transparent 55%),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.06), rgba(255, 255, 255, 0.02)),
+    var(--dark-card);
+}
+
+.payment-method {
+  color: var(--accent);
+  font-size: 0.82rem;
+  font-weight: 900;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.payment-handle {
+  font-size: 1.32rem;
+  font-weight: 900;
+  color: var(--white);
+  text-decoration: none;
+}
+
+a.payment-handle {
+  color: var(--accent);
+}
+
+a.payment-handle:hover,
+a.payment-handle:focus-visible {
+  text-decoration: underline;
+  outline: none;
+}
+
+.payment-note {
+  margin-top: 2px;
+  color: var(--muted);
+  font-size: 0.85rem;
+  line-height: 1.5;
+}
+
+@media (max-width: 720px) {
+  .payments-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
 }

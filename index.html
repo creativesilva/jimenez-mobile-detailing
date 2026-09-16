@@ -59,6 +59,7 @@
           <button class="open-booking" type="button">Book Detailing</button>
           <a href="./about/">About</a>
           <a href="#services" data-close-menu>Services</a>
+          <a href="#payments" data-close-menu>Payments</a>
           <a href="./before-after/">Before & After</a>
           <a href="./community/">Community</a>
         </nav>
@@ -192,6 +193,29 @@
         <p class="pricing-note">
           Pricing is confirmed by text and may vary based on vehicle size, condition, and service location.
         </p>
+      </section>
+
+      <section class="section payments-section" id="payments">
+        <div class="section-heading">
+          <p class="eyebrow">Payments</p>
+          <h2>Easy ways to pay.</h2>
+          <p>Pay whichever way is easiest for you. Confirm your total by text, then send it over.</p>
+        </div>
+        <div class="payments-grid">
+          <div class="payment-card">
+            <span class="payment-method">Zelle</span>
+            <strong class="payment-handle">(805) 423-7245</strong>
+          </div>
+          <div class="payment-card">
+            <span class="payment-method">Venmo</span>
+            <a class="payment-handle" href="https://venmo.com/u/alfredojimenez6126" target="_blank" rel="noreferrer">@alfredojimenez6126</a>
+          </div>
+          <div class="payment-card">
+            <span class="payment-method">Card, tap to pay</span>
+            <strong class="payment-handle">Square on phone</strong>
+            <span class="payment-note">A small service fee applies to card payments.</span>
+          </div>
+        </div>
       </section>
 
       <section class="section preview-band about-preview">
@@ -328,6 +352,7 @@
             />
           </label>
 
+          <div class="form-grid">
           <label>
             Package interest
             <input type="hidden" name="selected_package" id="selected_package" value="Essential Detail" />
@@ -360,6 +385,7 @@
               </div>
             </div>
           </label>
+          </div>
 
           <div class="service-hours" aria-label="Service scheduling information">
             <strong>Preferred service hours</strong>
@@ -369,7 +395,7 @@
 
           <label>
             <div class="field-head">Notes <span>optional</span></div>
-            <textarea name="notes" rows="4" placeholder="Tell us anything helpful about the vehicle, location, or scheduling needs."></textarea>
+            <textarea name="notes" rows="3" placeholder="Tell us anything helpful about the vehicle, location, or scheduling needs."></textarea>
           </label>
 
           <label class="checkbox-label consent">
