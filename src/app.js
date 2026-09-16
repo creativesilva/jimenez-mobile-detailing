@@ -7,7 +7,7 @@ const form = document.getElementById('inquiry-form')
 const message = document.getElementById('form-message')
 const siteMenu = document.getElementById('site-menu')
 const menuToggle = document.querySelector('.menu-toggle')
-const defaultPackage = 'Additional Services'
+const defaultPackage = 'Essential Detail'
 
 if (window.emailjs) {
   window.emailjs.init({ publicKey: EMAILJS_PUBLIC_KEY })
@@ -61,7 +61,7 @@ if (window.location.hash === '#book') {
   window.setTimeout(openBookingModal, 250)
 }
 
-document.querySelectorAll('.custom-select').forEach((select) => {
+document.querySelectorAll('.custom-select:not(.multi-select)').forEach((select) => {
   const trigger = select.querySelector('.custom-select-button')
   const label = trigger?.querySelector('span')
   const options = select.querySelectorAll('[role="option"]')
@@ -94,6 +94,44 @@ document.querySelectorAll('.custom-select').forEach((select) => {
   })
 })
 
+document.querySelectorAll('.custom-select.multi-select').forEach((select) => {
+  const trigger = select.querySelector('.custom-select-button')
+  const label = trigger?.querySelector('span')
+  const options = Array.from(select.querySelectorAll('[role="option"]'))
+  const fieldName = select.dataset.name
+  const input = fieldName ? document.querySelector(`input[name="${fieldName}"]`) : null
+  const placeholder = label ? label.textContent : ''
+
+  function update() {
+    const chosen = options
+      .filter((option) => option.getAttribute('aria-selected') === 'true')
+      .map((option) => option.dataset.value || option.textContent.trim())
+
+    if (input) {
+      input.value = chosen.join(', ')
+    }
+
+    if (label) {
+      label.textContent =
+        chosen.length === 0 ? placeholder : chosen.length === 1 ? chosen[0] : `${chosen.length} selected`
+    }
+  }
+
+  trigger?.addEventListener('click', () => {
+    const isOpen = select.classList.contains('open')
+    closeAllCustomSelects()
+    select.classList.toggle('open', !isOpen)
+    trigger.setAttribute('aria-expanded', String(!isOpen))
+  })
+
+  options.forEach((option) => {
+    option.addEventListener('click', () => {
+      option.setAttribute('aria-selected', String(option.getAttribute('aria-selected') !== 'true'))
+      update()
+    })
+  })
+})
+
 document.addEventListener('click', (event) => {
   if (!event.target.closest('.custom-select')) {
     closeAllCustomSelects()
@@ -111,13 +149,16 @@ if (form && message) {
 
     const submitButton = form.querySelector('button[type="submit"]')
     const formData = new FormData(form)
+    const selectedPackage = String(formData.get('selected_package') || '')
+    const addOns = String(formData.get('add_ons') || '')
+    const packageValue = addOns ? `${selectedPackage} (Add-ons: ${addOns})` : selectedPackage
 
     const templateParams = {
       from_name: String(formData.get('from_name') || ''),
       phone: String(formData.get('phone') || ''),
       vehicle_info: String(formData.get('vehicle_info') || 'Not provided'),
       service_location: String(formData.get('service_location') || ''),
-      selected_package: String(formData.get('selected_package') || ''),
+      selected_package: packageValue,
       notes: String(formData.get('notes') || 'None provided'),
       reply_to: 'jimenezmobiledetailing805@gmail.com',
     }
@@ -130,6 +171,7 @@ if (form && message) {
       await window.emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, templateParams)
       form.reset()
       setCustomSelectValue('selected_package', defaultPackage)
+      resetMultiSelects()
       showMessage(
         'Thanks - your request was sent. Jimenez Mobile Detailing will text you back to confirm availability.',
         'success',
@@ -306,6 +348,25 @@ function closeAllCustomSelects() {
   document.querySelectorAll('.custom-select').forEach((select) => {
     select.classList.remove('open')
     select.querySelector('.custom-select-button')?.setAttribute('aria-expanded', 'false')
+  })
+}
+
+function resetMultiSelects() {
+  document.querySelectorAll('.custom-select.multi-select').forEach((select) => {
+    select.querySelectorAll('[role="option"]').forEach((option) => option.setAttribute('aria-selected', 'false'))
+
+    const label = select.querySelector('.custom-select-button span')
+
+    if (label) {
+      label.textContent = 'Select any add-ons'
+    }
+
+    const fieldName = select.dataset.name
+    const input = fieldName ? document.querySelector(`input[name="${fieldName}"]`) : null
+
+    if (input) {
+      input.value = ''
+    }
   })
 }
 

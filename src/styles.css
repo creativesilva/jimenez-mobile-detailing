@@ -1970,3 +1970,109 @@ body.lightbox-open {
     grid-template-columns: minmax(0, 1fr);
   }
 }
+
+/* Multi-select (add-ons) dropdown */
+.multi-select .custom-options {
+  max-height: 280px;
+  overflow-y: auto;
+}
+
+.multi-select .custom-options button {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.multi-select .custom-options button::before {
+  content: '';
+  flex: none;
+  width: 18px;
+  height: 18px;
+  border: 1.5px solid rgba(255, 255, 255, 0.45);
+  border-radius: 5px;
+  background: transparent;
+}
+
+.multi-select .custom-options button[aria-selected='true']::before {
+  border-color: var(--accent);
+  background: var(--accent)
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='none' stroke='%23111' stroke-width='3.2' stroke-linecap='round' stroke-linejoin='round' d='M5 12l5 5 9-11'/%3E%3C/svg%3E")
+    center / 13px no-repeat;
+}
+
+/* Center content sections at all widths */
+.preview-band,
+.story-section {
+  grid-template-columns: minmax(0, 1fr);
+  justify-items: center;
+  text-align: center;
+}
+
+.preview-band > div,
+.story-section > div {
+  max-width: 860px;
+  margin-inline: auto;
+}
+
+.preview-band p,
+.story-section p {
+  margin-inline: auto;
+}
+
+.owner-text-wrap {
+  text-align: center;
+}
+
+.about-preview .owner-text-wrap {
+  margin-inline: auto;
+}
+
+.inline-owner-photo {
+  float: none;
+  margin: 0 auto 16px;
+}
+
+.values-grid article {
+  text-align: center;
+}
+
+/* Center the hero panel caption and the pricing note */
+.hero-panel div {
+  text-align: center;
+  justify-items: center;
+}
+
+.pricing-note {
+  text-align: center;
+}
+
+/* View gallery button overlaid on the carousel image corner */
+.carousel-gallery-link {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  z-index: 5;
+  display: inline-flex;
+  align-items: center;
+  min-height: 46px;
+  padding: 0 22px;
+  border-radius: 999px;
+  font-weight: 900;
+  font-size: 1.02rem;
+  text-decoration: none;
+  color: var(--white);
+  background: linear-gradient(135deg, var(--orange), #ff7a2d 60%, var(--accent));
+  box-shadow: 0 12px 28px rgba(225, 86, 38, 0.4);
+  transition: transform 180ms ease;
+}
+
+.carousel-gallery-link:hover,
+.carousel-gallery-link:focus-visible {
+  transform: translateY(-2px);
+  outline: none;
+}
+
+.community-band-copy {
+  text-align: center;
+  justify-items: center;
+}

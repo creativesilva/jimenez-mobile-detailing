@@ -170,7 +170,7 @@
                 aria-controls="additional-services-card"
                 aria-expanded="false"
               >
-                <span class="package-tile-title">Additional Services</span>
+                <span class="package-tile-title">Add-Ons</span>
                 <span class="package-tile-price">Contact for pricing</span>
                 <span class="package-tile-action">See details</span>
               </button>
@@ -184,7 +184,7 @@
                   <li>Water spot treatment</li>
                   <li>Leather conditioning</li>
                 </ul>
-                <button class="primary-button package-select" type="button" data-package="Additional Services">Select this package</button>
+                <button class="primary-button open-booking" type="button">Book a detail</button>
               </div>
             </article>
           </div>
@@ -235,14 +235,12 @@
       </section>
 
       <section class="section">
-        <div class="section-heading row-heading">
-          <div>
-            <p class="eyebrow">Before and after</p>
-            <h2>Proof you can see before you reach out.</h2>
-          </div>
-          <a class="secondary-button" href="./before-after/">View gallery</a>
+        <div class="section-heading">
+          <p class="eyebrow">Before and after</p>
+          <h2>Proof you can see before you reach out.</h2>
         </div>
         <div class="carousel" data-carousel>
+          <a class="carousel-gallery-link" href="./before-after/">View gallery</a>
           <div class="carousel-track">
             <figure class="gallery-card carousel-slide">
               <img src="./public/assets/images/work-f150.jpg" alt="Ford F-150 exterior detailing result" loading="lazy" />
@@ -332,16 +330,33 @@
 
           <label>
             Package interest
-            <input type="hidden" name="selected_package" id="selected_package" value="Additional Services" />
+            <input type="hidden" name="selected_package" id="selected_package" value="Essential Detail" />
             <div class="custom-select" data-name="selected_package">
               <button class="custom-select-button" type="button" aria-haspopup="listbox" aria-expanded="false">
-                <span>Additional Services</span>
+                <span>Essential Detail</span>
               </button>
               <div class="custom-options" role="listbox">
-                <button type="button" role="option" data-value="Essential Detail">Essential Detail</button>
+                <button type="button" role="option" data-value="Essential Detail" aria-selected="true">Essential Detail</button>
                 <button type="button" role="option" data-value="Signature Detail">Signature Detail</button>
-                <button type="button" role="option" data-value="Additional Services" aria-selected="true">Additional Services</button>
                 <button type="button" role="option" data-value="Not sure - help me choose">Not sure - help me choose</button>
+              </div>
+            </div>
+          </label>
+
+          <label>
+            <div class="field-head">Add-ons <span>optional</span></div>
+            <input type="hidden" name="add_ons" id="add_ons" value="" />
+            <div class="custom-select multi-select" data-name="add_ons">
+              <button class="custom-select-button" type="button" aria-haspopup="listbox" aria-expanded="false">
+                <span>Select any add-ons</span>
+              </button>
+              <div class="custom-options" role="listbox" aria-multiselectable="true">
+                <button type="button" role="option" data-value="High-temperature steam cleaning" aria-selected="false">High-temperature steam cleaning</button>
+                <button type="button" role="option" data-value="Paint decontamination" aria-selected="false">Paint decontamination</button>
+                <button type="button" role="option" data-value="Ceramic sealant options" aria-selected="false">Ceramic sealant options</button>
+                <button type="button" role="option" data-value="Carpet and upholstery shampooing" aria-selected="false">Carpet and upholstery shampooing</button>
+                <button type="button" role="option" data-value="Water spot treatment" aria-selected="false">Water spot treatment</button>
+                <button type="button" role="option" data-value="Leather conditioning" aria-selected="false">Leather conditioning</button>
               </div>
             </div>
           </label>
